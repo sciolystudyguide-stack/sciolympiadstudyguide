@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Division B Science Study Hub | 2026–2027 Event Prep</title>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e3a8a;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand span {
+      background: var(--accent);
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: #ffffff; }
+    .btn {
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .btn:active { transform: scale(0.98); }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0284c7 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 4rem 1.5rem 3.5rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 1.75rem;
+      color: #e2e8f0;
+      font-size: 1.08rem;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-hero {
+      background: #ffffff;
+      color: var(--primary);
+      padding: 0.75rem 1.6rem;
+      font-size: 1rem;
+    }
+    .btn-hero:hover { background: #f1f5f9; }
+
+    .controls {
+      max-width: 1150px;
+      margin: 2rem auto 1.5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .search-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.98rem;
+      background: #ffffff;
+      color: var(--text);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active {
+      background: var(--secondary);
+      color: #ffffff;
+      border-color: var(--secondary);
+    }
+
+    .stats-bar {
+      max-width: 1150px;
+      margin: 0 auto 1rem;
+      padding: 0 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .grid {
+      max-width: 1150px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .cat-life { background: #dcfce7; color: #166534; }
+    .cat-earth { background: #fef3c7; color: #92400e; }
+    .cat-phys { background: #e0e7ff; color: #3730a3; }
+    .cat-tech { background: #ffedd5; color: #9a3412; }
+    .cat-inquiry { background: #f3e8ff; color: #6b21a8; }
+
+    .type-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 0.45rem;
+    }
+    .card p {
+      font-size: 0.92rem;
+      color: #475569;
+      margin-bottom: 1rem;
+    }
+    .topics {
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+    .topics strong { color: var(--text); }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 200;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: #ffffff;
+      border-radius: 12px;
+      max-width: 440px;
+      width: 100%;
+      padding: 1.75rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .modal h2 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.35rem;
+    }
+    .modal p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      Division B Science Study Hub <span>2026–2027</span>
+    </div>
+    <nav>
+      <a href="#events">All 23 Events</a>
+      <button class="btn" onclick="openModal()">Sign Up</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Division B Event Study Guide</h1>
+    <p>Complete reference directory covering all 23 standard 2026–2027 Science Olympiad Division B events, core topics, and competition formats.</p>
+    <div class="hero-actions">
+      <button class="btn btn-hero" onclick="openModal()">Sign Up for Study Updates</button>
+    </div>
+  </section>
+
+  <section class="controls" id="events">
+    <div class="search-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search all 23 Division B events or topics (e.g., Anatomy, Ciphers, Glider)..." oninput="renderEvents()" />
+    </div>
+    <div class="filters" id="filterButtons">
+      <button class="filter-btn active" data-cat="All" onclick="setCategory('All', this)">All Events (23)</button>
+      <button class="filter-btn" data-cat="Life, Personal & Social Science" onclick="setCategory('Life, Personal & Social Science', this)">Life Science (5)</button>
+      <button class="filter-btn" data-cat="Earth & Space Science" onclick="setCategory('Earth & Space Science', this)">Earth & Space (5)</button>
+      <button class="filter-btn" data-cat="Physical Science & Chemistry" onclick="setCategory('Physical Science & Chemistry', this)">Physical & Chem (5)</button>
+      <button class="filter-btn" data-cat="Technology & Engineering" onclick="setCategory('Technology & Engineering', this)">Tech & Engineering (4)</button>
+      <button class="filter-btn" data-cat="Inquiry & Nature of Science" onclick="setCategory('Inquiry & Nature of Science', this)">Inquiry & Nature (4)</button>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <span id="eventCount">Showing 23 of 23 Division B events</span>
+    <span>2026–2027 Season Rotation</span>
+  </div>
+
+  <main class="grid" id="eventsGrid"></main>
+
+  <footer>
+    Independent Student Study Resource • Division B Science Study Hub
+  </footer>
+
+  <div class="modal-backdrop" id="signupModal" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <h2>Open Access Study Hub</h2>
+      <p>No account or login is required! All 23 Division B event guides, topic checklists, and study notes on this page are completely open for everyone to browse anytime.</p>
+      <button class="btn" onclick="closeModal()">Start Studying</button>
+    </div>
+  </div>
+
+  <script>
+    const eventsData = [
+      // Life, Personal & Social Science (5)
+      {
+        name: "Anatomy & Physiology",
+        category: "Life, Personal & Social Science",
+        badgeClass: "cat-life",
+        format: "Core Knowledge",
+        desc: "Students demonstrate an understanding of the anatomy and physiology of selected human body systems, including structures, functions, and disorders.",
+        topics: "Organ systems, tissue histology, physiological mechanisms, and clinical diagnostics."
+      },
+      {
+        name: "Botany",
+        category: "Life, Personal & Social Science",
+        badgeClass: "cat-life",
+        format: "Core Knowledge",
+        desc: "Teams answer questions and analyze specimens covering plant anatomy, physiology, reproduction, taxonomy, and ecological roles.",
+        topics: "Photosynthesis, vascular tissues, plant hormones, life cycles, and soil nutrients."
+      },
+      {
+        name: "Disease Detectives",
+        category: "Life, Personal & Social Science",
+        badgeClass: "cat-life",
+        format: "Core Knowledge",
+        desc: "Participants apply investigative epidemiological skills to analyze disease outbreaks, public health data, and transmission patterns.",
+        topics: "Outbreak investigation steps, epi curves, odds ratios, relative risk, and surveillance."
+      },
+      {
+        name: "Heredity",
+        category: "Life, Personal & Social Science",
+        badgeClass: "cat-life",
+        format: "Core Knowledge",
+        desc: "Students solve problems and analyze data related to classical Mendelian genetics, molecular biology, and inheritance patterns.",
+        topics: "Punnett squares, pedigree analysis, DNA replication, transcription, and mutations."
+      },
+      {
+        name: "Water Quality",
+        category: "Life, Personal & Social Science",
+        badgeClass: "cat-life",
+        format: "Hybrid",
+        desc: "Teams evaluate aquatic environments, identify macroinvertebrates, and test water samples using a student-built salinometer.",
+        topics: "Freshwater/estuarine ecology, nutrient cycles, dissolved oxygen, pH, and salinity testing."
+      },
+
+      // Earth & Space Science (5)
+      {
+        name: "Dynamic Planet",
+        category: "Earth & Space Science",
+        badgeClass: "cat-earth",
+        format: "Core Knowledge",
+        desc: "Participants complete tasks and interpret maps and data related to Earth's geological and hydrological processes.",
+        topics: "Tectonics, landforms, sediment transport, stratigraphic profiles, and hazard mitigation."
+      },
+      {
+        name: "Meteorology",
+        category: "Earth & Space Science",
+        badgeClass: "cat-earth",
+        format: "Core Knowledge",
+        desc: "Students use scientific process skills to analyze weather maps, radar imagery, atmospheric structure, and severe storm systems.",
+        topics: "Fronts, pressure systems, station models, severe weather, and atmospheric circulation."
+      },
+      {
+        name: "Remote Sensing",
+        category: "Earth & Space Science",
+        badgeClass: "cat-earth",
+        format: "Core Knowledge",
+        desc: "Teams use satellite imagery and aerial sensor data to analyze Earth's surface features, climate indicators, and environmental changes.",
+        topics: "Electromagnetic spectrum, NDVI, satellite orbits, spectral signatures, and LiDAR."
+      },
+      {
+        name: "Rocks & Minerals",
+        category: "Earth & Space Science",
+        badgeClass: "cat-earth",
+        format: "Core Knowledge",
+        desc: "Participants identify specimens from the official list and answer questions on mineral properties, rock formation, and economic uses.",
+        topics: "Mohs hardness, crystal systems, Bowen's reaction series, igneous/sedimentary/metamorphic rocks."
+      },
+      {
+        name: "Solar System",
+        category: "Earth & Space Science",
+        badgeClass: "cat-earth",
+        format: "Core Knowledge",
+        desc: "Students demonstrate knowledge of planetary geology, orbital mechanics, moons, small bodies, and space exploration missions.",
+        topics: "Kepler's laws, planetary atmospheres, cratering, tidal forces, and spacecraft discoveries."
+      },
+
+      // Physical Science & Chemistry (5)
+      {
+        name: "Circuit Lab",
+        category: "Physical Science & Chemistry",
+        badgeClass: "cat-phys",
+        format: "Hybrid",
+        desc: "Teams complete hands-on breadboard construction tasks and solve theoretical problems involving DC electricity and magnetism.",
+        topics: "Ohm's Law, Kirchhoff's rules, series/parallel circuits, resistors, LEDs, and electromagnetism."
+      },
+      {
+        name: "Crime Busters",
+        category: "Physical Science & Chemistry",
+        badgeClass: "cat-phys",
+        format: "Laboratory",
+        desc: "Given a crime scenario and physical evidence, students perform qualitative chemical and physical tests to identify suspects.",
+        topics: "Powder analysis, paper chromatography, plastics/polymers, fibers, hairs, and fingerprints."
+      },
+      {
+        name: "Food Science",
+        category: "Physical Science & Chemistry",
+        badgeClass: "cat-phys",
+        format: "Hybrid",
+        desc: "Participants answer questions on food chemistry and nutrition while testing the physical properties of ingredients and mixtures.",
+        topics: "Macromolecules, leavening agents, emulsions, calorimetry, and food label analysis."
+      },
+      {
+        name: "Hovercraft",
+        category: "Physical Science & Chemistry",
+        badgeClass: "cat-phys",
+        format: "Build / Hybrid",
+        desc: "Teams construct a self-propelled air-cushion vehicle to traverse a track within a target time and answer mechanics questions.",
+        topics: "Kinematics, Newton's laws, fluid pressure, friction, momentum, and thrust control."
+      },
+      {
+        name: "Thermodynamics",
+        category: "Physical Science & Chemistry",
+        badgeClass: "cat-phys",
+        format: "Hybrid",
+        desc: "Students build an insulated device to retain heat and solve problems covering heat transfer, temperature scales, and phase changes.",
+        topics: "Conduction, convection, radiation, specific heat capacity, calorimetry, and laws of thermo."
+      },
+
+      // Technology & Engineering (4)
+      {
+        name: "Boomilever",
+        category: "Technology & Engineering",
+        badgeClass: "cat-tech",
+        format: "Build",
+        desc: "Teams design and build a lightweight cantilevered wooden structure tested for maximum load-to-mass structural efficiency.",
+        topics: "Tension vs. compression, truss geometry, wood density, joint adhesives, and load paths."
+      },
+      {
+        name: "Elastic Launched Glider",
+        category: "Technology & Engineering",
+        badgeClass: "cat-tech",
+        format: "Build",
+        desc: "Prior to the tournament, teams construct, test, and optimize rubber-band-launched balsa gliders for maximum flight duration.",
+        topics: "Lift-to-drag ratio, center of gravity, wing incidence, trim adjustments, and flight logs."
+      },
+      {
+        name: "Roller Coaster",
+        category: "Technology & Engineering",
+        badgeClass: "cat-tech",
+        format: "Build",
+        desc: "Teams build a gravitational track device engineered to guide a sphere from start to finish as close to a target time as possible.",
+        topics: "Potential and kinetic energy, friction braking, track banking, and timing consistency."
+      },
+      {
+        name: "Scrambler",
+        category: "Technology & Engineering",
+        badgeClass: "cat-tech",
+        format: "Build",
+        desc: "Participants design a mechanical transport powered by a falling mass that carries an uncooked egg toward a terminal barrier without breaking it.",
+        topics: "Energy transfer, wingnut braking systems, alignment calibration, and repeatable distance."
+      },
+
+      // Inquiry & Nature of Science (4)
+      {
+        name: "Codebusters",
+        category: "Inquiry & Nature of Science",
+        badgeClass: "cat-inquiry",
+        format: "Core Knowledge",
+        desc: "Teams cryptanalyze and decode encrypted messages using frequency analysis, mathematical keys, and historical cipher techniques.",
+        topics: "Aristocrats, Patristocrats, Caesar, Vigenere, Affine, Baconian, and Hill ciphers."
+      },
+      {
+        name: "Experimental Design",
+        category: "Inquiry & Nature of Science",
+        badgeClass: "cat-inquiry",
+        format: "Laboratory",
+        desc: "Given a set of materials on-site, teams design, conduct, analyze, and write a complete scientific report on an original experiment.",
+        topics: "Variables, hypothesis framing, data tables, graphing, statistical analysis, and error sources."
+      },
+      {
+        name: "Ping-Pong Parachute",
+        category: "Inquiry & Nature of Science",
+        badgeClass: "cat-inquiry",
+        format: "Build",
+        desc: "Teams construct a bottle rocket system that launches a ping-pong ball attached to a parachute to achieve maximum hang time indoors.",
+        topics: "Air resistance, canopy surface area, shroud line length, launch pressure, and stability."
+      },
+      {
+        name: "Write It Do It",
+        category: "Inquiry & Nature of Science",
+        badgeClass: "cat-inquiry",
+        format: "Laboratory",
+        desc: "One partner writes technical assembly instructions for a complex object while the other partner builds it solely from those written directions.",
+        topics: "Spatial terminology, clear sequencing, orientation landmarks, and precise measurements."
+      }
+    ];
+
+    let activeCategory = "All";
+
+    function setCategory(category, btnElement) {
+      activeCategory = category;
+      document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+      btnElement.classList.add("active");
+      renderEvents();
+    }
+
+    function renderEvents() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      const grid = document.getElementById("eventsGrid");
+      const countLabel = document.getElementById("eventCount");
+
+      const filtered = eventsData.filter(ev => {
+        const matchesCat = activeCategory === "All" || ev.category === activeCategory;
+        const matchesQuery =
+          ev.name.toLowerCase().includes(query) ||
+          ev.category.toLowerCase().includes(query) ||
+          ev.desc.toLowerCase().includes(query) ||
+          ev.topics.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      countLabel.textContent = `Showing ${filtered.length} of ${eventsData.length} Division B events`;
+
+      grid.innerHTML = filtered.map(ev => `
+        <article class="card">
+          <div>
+            <div class="card-top">
+              <span class="badge ${ev.badgeClass}">${ev.category}</span>
+              <span class="type-tag">${ev.format}</span>
+            </div>
+            <h3>${ev.name}</h3>
+            <p>${ev.desc}</p>
+          </div>
+          <div class="topics">
+            <strong>Key Study Topics:</strong> ${ev.topics}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function openModal() {
+      document.getElementById("signupModal").classList.add("open");
+    }
+
+    function closeModal(event) {
+      if (!event || event.target.id === "signupModal") {
+        document.getElementById("signupModal").classList.remove("open");
+      }
+    }
+
+    renderEvents();
+  </script>
+</body>
+</html>
